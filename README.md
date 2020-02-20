@@ -21,7 +21,7 @@ After finding sufficient information on the MODBUS protocol used (see file [RD60
 ***node-red*** is compatible with many environments: windows, Linux, Android, Raspberry...
 
 This first simple flow is useful for tests: you can quickly write and read RD6006 registers.
-![ModBus test RD6006](images\2020-02-16.202430.shot.png)
+![ModBus test RD6006](images/2020-02-16.202430.shot.png)
 **Installation**
 
 I used the USB-serial connection, on WIN10 with the `CH341SER` driver. Once connected, in *devices* it is present with the name 'USB-SERIAL.CH340 (COM10)'.
@@ -33,7 +33,7 @@ I used the USB-serial connection, on WIN10 with the `CH341SER` driver. Once conn
 ## NiMH battery charger
 This *flow* uses the RD6006 to get a simple but complete NiMH battery charger-logger.
 
-![](images\2020-02-20.134707.shot.png)
+![](images/2020-02-20.134707.shot.png)
 
 
 
