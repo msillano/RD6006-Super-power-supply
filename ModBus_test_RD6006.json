@@ -1,0 +1,611 @@
+[
+    {
+        "id": "ffe68fa3.bd8d2",
+        "type": "tab",
+        "label": "ModBus test RD6006",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2226568a.92355a",
+        "type": "inject",
+        "z": "ffe68fa3.bd8d2",
+        "name": "Polling data",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 620,
+        "wires": [
+            [
+                "e5456118.5f002"
+            ]
+        ]
+    },
+    {
+        "id": "e5456118.5f002",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "FC3: get RT registers ",
+        "func": "msg.payload = { 'fc': 3, 'unitid': 1, 'address':8, 'quantity': 4 }\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 620,
+        "wires": [
+            [
+                "fb99e652.f45458"
+            ]
+        ]
+    },
+    {
+        "id": "fb99e652.f45458",
+        "type": "modbus-flex-getter",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "server": "2b92a888.1890a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 610,
+        "y": 620,
+        "wires": [
+            [
+                "337478a7.69f8d8"
+            ],
+            [
+                "45a8fb6b.b62b24"
+            ]
+        ]
+    },
+    {
+        "id": "337478a7.69f8d8",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "Split Registers ",
+        "func": "var msg1 = { payload:'V-SET = '+ msg.payload[0]/100 };\nvar msg2 = { payload:'I-SET = '+ msg.payload[1]/1000 };\nvar msg3 = { payload:'V-OUT = '+ msg.payload[2]/100 };\nvar msg4 = { payload:'I-OUT = '+ msg.payload[3]/1000 };\nreturn ([msg1, msg2, msg3 , msg4]);\n",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 860,
+        "y": 620,
+        "wires": [
+            [
+                "46aae57.5bde01c"
+            ],
+            [
+                "811277e7.db7f08"
+            ],
+            [
+                "3d229796.8f4468"
+            ],
+            [
+                "e64b8eb5.10161"
+            ]
+        ]
+    },
+    {
+        "id": "46aae57.5bde01c",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1170,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "811277e7.db7f08",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1170,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "3d229796.8f4468",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1170,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "e64b8eb5.10161",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1170,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "d0388d35.2f65d",
+        "type": "inject",
+        "z": "ffe68fa3.bd8d2",
+        "name": "OUT ON",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "e2733c54.b4cb5"
+            ]
+        ]
+    },
+    {
+        "id": "be69d79.a9d8a28",
+        "type": "modbus-flex-write",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "server": "2b92a888.1890a8",
+        "x": 650,
+        "y": 280,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e2733c54.b4cb5",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "FC 6:  set OUT",
+        "func": "msg.payload = { value: msg.payload, 'fc': 6, 'unitid': 1, 'address': 18 , 'quantity': 1 };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 280,
+        "wires": [
+            [
+                "be69d79.a9d8a28"
+            ]
+        ]
+    },
+    {
+        "id": "910fd434.274cd8",
+        "type": "inject",
+        "z": "ffe68fa3.bd8d2",
+        "name": "OUT OFF",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 300,
+        "wires": [
+            [
+                "e2733c54.b4cb5"
+            ]
+        ]
+    },
+    {
+        "id": "a66dd39b.49c3d",
+        "type": "inject",
+        "z": "ffe68fa3.bd8d2",
+        "name": "V_SET",
+        "topic": "",
+        "payload": "588",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "a5194293.57149"
+            ]
+        ]
+    },
+    {
+        "id": "a5194293.57149",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "FC6: set V_SET",
+        "func": "msg.payload = { value: msg.payload, 'fc': 6, 'unitid': 1, 'address': 8 , 'quantity': 1 };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "4b3fc62a.9c06c8"
+            ]
+        ]
+    },
+    {
+        "id": "4b3fc62a.9c06c8",
+        "type": "modbus-flex-write",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "server": "2b92a888.1890a8",
+        "x": 650,
+        "y": 160,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "58c6c81d.105778",
+        "type": "inject",
+        "z": "ffe68fa3.bd8d2",
+        "name": "I_SET",
+        "topic": "",
+        "payload": "2000",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "a0d28040.baae6"
+            ]
+        ]
+    },
+    {
+        "id": "a0d28040.baae6",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "FC6: set I_SET",
+        "func": "msg.payload = { value: msg.payload, 'fc': 6, 'unitid': 1, 'address': 9 , 'quantity': 1 };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 200,
+        "wires": [
+            [
+                "4b3fc62a.9c06c8"
+            ]
+        ]
+    },
+    {
+        "id": "8e554fc8.ba0d7",
+        "type": "inject",
+        "z": "ffe68fa3.bd8d2",
+        "name": "get Timestamp",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 540,
+        "wires": [
+            [
+                "21861f54.93084"
+            ]
+        ]
+    },
+    {
+        "id": "21861f54.93084",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "FC3: get data, time",
+        "func": "msg.payload = { 'fc': 3, 'unitid': 1, 'address':0x30, 'quantity': 8 }\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 540,
+        "wires": [
+            [
+                "1df6e189.cffc9e"
+            ]
+        ]
+    },
+    {
+        "id": "1df6e189.cffc9e",
+        "type": "modbus-flex-getter",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "server": "2b92a888.1890a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 610,
+        "y": 540,
+        "wires": [
+            [
+                "301ca4dc.62674c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "301ca4dc.62674c",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "IS0Timestamp = f(date, time)",
+        "func": "\nmsg.payload = new Date(msg.payload[0], \nmsg.payload[1]-1,msg.payload[2],\nmsg.payload[3],msg.payload[4],\nmsg.payload[5],0).toISOString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 900,
+        "y": 540,
+        "wires": [
+            [
+                "7a09aa76.6424f4"
+            ]
+        ]
+    },
+    {
+        "id": "7a09aa76.6424f4",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "puts Timestamp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1160,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "b84ecf2b.462da",
+        "type": "comment",
+        "z": "ffe68fa3.bd8d2",
+        "name": "MODBUS RD6006 test - config",
+        "info": "Test flows to set registers:\n\nV-SET: sends command FC3, to set register 0x0008\n    the V output value is in the inject payload\n    \nI-SET: sends command FC3, to set register 0x0009\n    the I output value is in the inject payload\n    \nOUT-ON\nOUT-OFF:sends command FC3, to set register 0x0012\n    the 0/1 value is in the inject payload",
+        "x": 150,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3b53e7ac.8153a8",
+        "type": "comment",
+        "z": "ffe68fa3.bd8d2",
+        "name": "MODBUS RD6006 test - polling data",
+        "info": "Test flows to read registers: the output on debug padù:\n\n32 - test to  read 10 registers, starting from an address\n     the starting address is in the inject payload.\n     \nGet timestamp: reads date and time from RD6006 am makes a Timestamp ISO\n\nPolling dataù: gets and formats 7 RT values:\n    V-OUT, I-OUT, V-SET, I-SET, V-BATT, Ah-BATT, T°C-BATT",
+        "x": 160,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "45a8fb6b.b62b24",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "FC3: get RT registers ",
+        "func": "msg.payload = { 'fc': 3, 'unitid': 1, 'address':33, 'quantity': 7 }\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 800,
+        "wires": [
+            [
+                "cca29a1e.eca0c8"
+            ]
+        ]
+    },
+    {
+        "id": "cca29a1e.eca0c8",
+        "type": "modbus-flex-getter",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "server": "2b92a888.1890a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 610,
+        "y": 800,
+        "wires": [
+            [
+                "55b80dba.0e98e4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "55b80dba.0e98e4",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "Split Registers ",
+        "func": "var msg1 = { payload:'V-BATT = '+ msg.payload[0]/100 };\nvar msg2 = { payload:'Ah-BATT = '+(msg.payload[5]*65536 + msg.payload[6])/1000 };\nvar msg3 = { payload:'T-°C = '+ msg.payload[2] };\n\nreturn ([msg1, msg2, msg3]);\n",
+        "outputs": 3,
+        "noerr": 0,
+        "x": 840,
+        "y": 800,
+        "wires": [
+            [
+                "c078dcb3.03963"
+            ],
+            [
+                "36669948.159e96"
+            ],
+            [
+                "70e5d50e.86f21c"
+            ]
+        ]
+    },
+    {
+        "id": "c078dcb3.03963",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1170,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "36669948.159e96",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1170,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "70e5d50e.86f21c",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1170,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "1e9de2e8.673e1d",
+        "type": "function",
+        "z": "ffe68fa3.bd8d2",
+        "name": "FC3: get data, time",
+        "func": "msg.payload = { 'fc': 3, 'unitid': 1, 'address':msg.payload, 'quantity': 10 }\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 460,
+        "wires": [
+            [
+                "599e6396.6c082c"
+            ]
+        ]
+    },
+    {
+        "id": "599e6396.6c082c",
+        "type": "modbus-flex-getter",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "server": "2b92a888.1890a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 610,
+        "y": 460,
+        "wires": [
+            [
+                "a82f7dcf.98f6f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a82f7dcf.98f6f",
+        "type": "debug",
+        "z": "ffe68fa3.bd8d2",
+        "name": "puts Registers",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1160,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "91e0aefb.4237c",
+        "type": "inject",
+        "z": "ffe68fa3.bd8d2",
+        "name": "",
+        "topic": "",
+        "payload": "32",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "1e9de2e8.673e1d"
+            ]
+        ]
+    },
+    {
+        "id": "2b92a888.1890a8",
+        "type": "modbus-client",
+        "z": "",
+        "name": "RD6006",
+        "clienttype": "simpleser",
+        "bufferCommands": false,
+        "stateLogEnabled": false,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "14502",
+        "tcpType": "DEFAULT",
+        "serialPort": "COM10",
+        "serialType": "RTU",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": false
+    }
+]
