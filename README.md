@@ -42,7 +42,7 @@ This *flow* uses the RD6006 to get a simple but complete NiMH battery charger-lo
 - **SLOW charge**, constant tension (1.47-1.50), low current (C/40.. C/10), time very long, also continous charging. 
 - **FAST charge**, constant current (<= 1.2 C), high tension (5 V), until one hour charge.
 
- ![](images\2020-02-20.134433.shot.png)
+ ![](images/2020-02-20.134433.shot.png)
 
 End charge conditions:
 
