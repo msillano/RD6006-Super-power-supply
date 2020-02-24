@@ -32,7 +32,8 @@ I used the USB-serial connection, on WIN10 with the `CH341SER` driver. Once conn
 
 ## NiMH battery charger
 This *flow* uses the RD6006 to get a simple but complete NiMH battery charger-logger.
-Project migrated to [https://github.com/msillano/NiMH_charger_logger](https://github.com/msillano/NiMH_charger_logger)
+
+*Project migrated to [https://github.com/msillano/NiMH_charger_logger](https://github.com/msillano/NiMH_charger_logger)*
 
 ![](images/2020-02-20.134707.shot.png)
 
