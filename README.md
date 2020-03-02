@@ -1,7 +1,7 @@
 # RD6006-Super-power-supply
 A intelligent Power supply with PC control and logging, for very long test (battery cycles)
 ## Owerview
-The RD6006-W power supply is a fantastic professional tool, providing up to 60V, 6A (360 Watt), very complete with high level functions. It is also possible to control it from the front panel, or via WIFI with an APP from a smartphone, or via USB with a software on PC WIN. See [https://it.aliexpress.com/item/4000282551930.html](https://it.aliexpress.com/item/4000282551930.html "RD official store")
+The RD6006-W power supply is a quasi-professional device, providing up to 60V, 6A (360 Watt), very complete with high level functions. It is also possible to control it from the front panel, or via WIFI with an APP from a smartphone, or via USB with a software on PC WIN. See [https://it.aliexpress.com/item/4000282551930.html](https://it.aliexpress.com/item/4000282551930.html "RD official store")
 
 ![RD6006](images/2020-02-17.081154.shot.png)
 
