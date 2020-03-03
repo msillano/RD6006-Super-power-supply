@@ -20,7 +20,7 @@ See also:
  
 ## ModBus test RD6006
 After finding sufficient information on the MODBUS protocol used (see file [RD6006_prototocol_en.pdf](https://github.com/msillano/RD6006-Super-power-supply/blob/master/RD6006_prtotocol_en.pdf "RD6006 prototocol reverse engineering")), the solution to use ***node-red*** is the fastest and most flexible, because it requires very little programming. Furthermore
-***node-red*** is compatible with many environments: Windows, Linux, Raspberry...
+***node-red*** is compatible with many environments: Windows, Linux, Raspberry... (see  [Top-5-reasons-to-use-node-red-right-now](https://developer.ibm.com/technologies/iot/blogs/top-5-reasons-to-use-node-red-right-now/)).
 
 This first simple flow is useful for tests: you can quickly write and read RD6006 registers.
 ![ModBus test RD6006](images/2020-02-16.202430.shot.png)
