@@ -19,7 +19,7 @@ See also:
 - [https://github.com/rfinnie/rdserialtool](https://github.com/rfinnie/rdserialtool)  CLI in Python and  [https://github.com/Black-FX/rdserialtool](https://github.com/Black-FX/rdserialtool) UI extension.
  
 ## ModBus test RD6006
-After finding sufficient information on the MODBUS protocol used (see file [RD6006_prototocol_en.pdf](RD6006_prototocol_en.pdf "RD6006 prototocol reverse engineering")), the solution to use ***node-red*** is the fastest and most flexible, because it requires very little programming. Furthermore
+After finding sufficient information on the MODBUS protocol used (see file [RD6006_prototocol_en.pdf](https://github.com/msillano/RD6006-Super-power-supply/blob/master/RD6006_prtotocol_en.pdf "RD6006 prototocol reverse engineering")), the solution to use ***node-red*** is the fastest and most flexible, because it requires very little programming. Furthermore
 ***node-red*** is compatible with many environments: Windows, Linux, Raspberry...
 
 This first simple flow is useful for tests: you can quickly write and read RD6006 registers.
@@ -29,7 +29,7 @@ This first simple flow is useful for tests: you can quickly write and read RD600
 I used the USB-serial connection, on WIN10 with the `CH341SER` driver. Once connected, in *devices* it is present with the name 'USB-SERIAL.CH340 (COM10)'.
 
 - Add to the ***node-red** palette* the package *node-red-contrib-modbus* (see [https://github.com/BiancoRoyal/node-red-contrib-modbus](https://github.com/BiancoRoyal/node-red-contrib-modbus "node-red-contrib-modbus"))
-- Copy the contents of the file [ModBus_test_RD6006.json](ModBus_test_RD6006.json "ModBus test RD6006") to the clipboard and import it into a new flow in ***node-red***.
+- Copy the contents of the file [ModBus_test_RD6006.json](https://github.com/msillano/RD6006-Super-power-supply/blob/master/ModBus_test_RD6006.json06.json "ModBus test RD6006") to the clipboard and import it into a new flow in ***node-red***.
 - More use informations are in the comment nodes.
 
 ## NiMH battery charger
