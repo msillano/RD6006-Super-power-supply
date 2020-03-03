@@ -14,6 +14,7 @@ Although very complete, the supplied software is generic, not aimed at my purpos
 
 See also:
 
+- [https://ruclip.com/channel/UCy73jJ5-ZqhPzT7wJ6KTIaw](https://ruclip.com/channel/UCy73jJ5-ZqhPzT7wJ6KTIaw) video documentation.
 - [https://github.com/rfinnie/rdserialtool](https://github.com/rfinnie/rdserialtool)  CLI in Python and  [https://github.com/Black-FX/rdserialtool](https://github.com/Black-FX/rdserialtool) UI extension.
  
 ## ModBus test RD6006
